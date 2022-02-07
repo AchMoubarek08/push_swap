@@ -18,10 +18,18 @@ int	ft_atoi(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while(str[i])
 	{
+		if(str[i] >= '0' && str[i] <= '9')
+		{
 		k = k * 10 + str[i] - '0';
 		i++;
+		}
+		else
+		{
+			ft_putstr("error\n");
+			exit(0);
+		}
 	}
 	return (k * a);
 }

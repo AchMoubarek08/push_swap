@@ -35,31 +35,6 @@ void ft_putstr(char *str)
         i++;
     }
 }
-int	ft_atoi(const char *str)
-{
-	long	i;
-	long	a;
-	long	k;
-
-	k = 0;
-	a = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' )
-	{			
-		a = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		k = k * 10 + str[i] - '0';
-		i++;
-	}
-	return (k * a);
-}
 
 pile    new_pile(void)
 {
@@ -93,4 +68,25 @@ pile    pop_stack(pile st)
     st = st->next;
     free(element);
     return(st);
+}
+
+void    check_dup(pile a)
+{
+	int flag;
+	pile st;
+	while(!stack_vide(a))
+	{
+		st = a->next;
+		while(!stack_vide(st))
+		{
+			if(a->i == st->i)
+			{
+				ft_putstr("error\n");
+				exit(0);
+			}
+			st = st->next;
+		}
+		a = a->next;
+	}
+	free(st);
 }

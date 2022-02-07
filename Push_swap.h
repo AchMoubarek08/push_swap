@@ -31,5 +31,6 @@ void    push_to_stack(pile *a, pile *b, char *str);
 pile    pop_stack(pile st);
 pile    prep_four(pile a);
 pile    prep_five(pile a);
+void    check_dup(pile a);
 
 #endif

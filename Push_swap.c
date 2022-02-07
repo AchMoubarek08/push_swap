@@ -53,9 +53,11 @@ int main(int argc, char **argv)
     int i = argc;
     while (i > 1)
     {
+
         a = push_stack(a,ft_atoi(argv[i - 1]));
         i--;
     }
+    check_dup(a);
     print_stack(a);
     if(argc == 4)
         a = sorttree(a);
