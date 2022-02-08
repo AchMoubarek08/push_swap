@@ -31,5 +31,10 @@ int	ft_atoi(const char *str)
 			exit(0);
 		}
 	}
+	if(k > (long)2147483647)
+	{
+		ft_putstr("error\n");
+		exit(0);
+	}
 	return (k * a);
 }

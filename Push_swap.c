@@ -51,6 +51,7 @@ int main(int argc, char **argv)
     pile a = new_pile();
     pile b = new_pile();
     int i = argc;
+
     while (i > 1)
     {
 
@@ -58,12 +59,17 @@ int main(int argc, char **argv)
         i--;
     }
     check_dup(a);
-    print_stack(a);
     if(argc == 4)
         a = sorttree(a);
     else if(argc == 5)
         sortfour(&a, &b);
     else if(argc == 6)
         sortfive(&a, &b);
+    else
+    {
+        insertionsort(&a, &b, argc);
+        fill_a(&a, &b ,argc);
+    }
     print_stack(a);
+    return(0);
 }

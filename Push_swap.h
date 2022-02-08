@@ -32,5 +32,11 @@ pile    pop_stack(pile st);
 pile    prep_four(pile a);
 pile    prep_five(pile a);
 void    check_dup(pile a);
+void    insertionsort(pile *a, pile *b, int argc);
+int     getmin(pile a);
+pile    get_last(pile a);
+void    reverse_rotate(pile *a, char *str);
+void    fill_a(pile *a, pile *b, int argc);
+
 
 #endif
