@@ -1,5 +1,5 @@
 
-#include "Push_swap.h"
+#include "push_swap.h"
 
 void print_stack(pile st)
 {
@@ -172,5 +172,30 @@ void fill_a(pile *a, pile *b, int argc)
     {
         push_to_stack(b, a, "pa\n");
         argc--;
+    }
+}
+void   getcunk(pile *a, int argc, int *p)
+{
+    pile b;
+    int i = 0,j = 0;
+
+
+    insertionsort(a, &b, argc);
+    fill_a(a, &b ,argc);
+    print_stack(*a);
+    while(i <= (argc-2))
+    {
+        if(i == (argc-2)/5)
+            p[j++] = (*a)->i;
+        else if (i == 2 * (argc-2)/5 )
+            p[j++] = (*a)->i;
+        else if (i ==  3 * (argc-2)/5)
+            p[j++] = (*a)->i;
+        else if (i == 4 * (argc-2)/5)
+            p[j++] = (*a)->i;
+        else if (i ==  (argc-2))
+            p[j++] = (*a)->i;
+        i++;
+        *a = (*a)->next;
     }
 }

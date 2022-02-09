@@ -1,5 +1,5 @@
 
-#include "Push_swap.h"
+#include "push_swap.h"
 
 pile    swap_stack(pile st, char *str)
 {
@@ -50,9 +50,7 @@ pile   prep_four(pile a)
     }
     else if(four < top && four < two && four < three)
     {
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
+        reverse_rotate(&a, "rra\n");
     }
     return(a);
 }
@@ -79,16 +77,12 @@ pile    prep_five(pile a)
     }
     else if(four < top && four < two && four < three && four < five)
     {
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
+        reverse_rotate(&a, "rra\n");
+        reverse_rotate(&a, "rra\n");
     }
     else if(five < top && five < two && five < three && five < four)
     {
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n");
-        a = rotate_stack(a, "ra\n"); 
+        reverse_rotate(&a, "rra\n");
     }
     return(a);
 }

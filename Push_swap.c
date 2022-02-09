@@ -1,5 +1,5 @@
 
-#include "Push_swap.h"
+#include "push_swap.h"
 
 pile sorttree(pile st)
 {
@@ -46,12 +46,15 @@ void    sortfive(pile *a, pile *b)
     push_to_stack(b, a, "pa\n");
 }
 
+
 int main(int argc, char **argv)
 {
     pile a = new_pile();
     pile b = new_pile();
     int i = argc;
+    int *p;
 
+    p = (int *)malloc(20);
     while (i > 1)
     {
 
@@ -67,9 +70,15 @@ int main(int argc, char **argv)
         sortfive(&a, &b);
     else
     {
-        insertionsort(&a, &b, argc);
-        fill_a(&a, &b ,argc);
+        i = 0;
+        getcunk(&a, argc, p);
+        while( i < 5)
+        {
+            printf("%d\n", p[i]);
+            i++;
+        }
+        // insertionsort(&a, &b, argc);
+        // fill_a(&a, &b ,argc);
     }
-    print_stack(a);
     return(0);
 }

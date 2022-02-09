@@ -37,6 +37,7 @@ int     getmin(pile a);
 pile    get_last(pile a);
 void    reverse_rotate(pile *a, char *str);
 void    fill_a(pile *a, pile *b, int argc);
+void    getcunk(pile *a, int c, int *p);
 
 
 #endif
