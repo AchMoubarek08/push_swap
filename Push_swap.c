@@ -53,15 +53,16 @@ int main(int argc, char **argv)
     pile b = new_pile();
     int i = argc;
     int *p;
+    pile cp;
 
     p = (int *)malloc(20);
     while (i > 1)
     {
-
         a = push_stack(a,ft_atoi(argv[i - 1]));
         i--;
     }
     check_dup(a);
+
     if(argc == 4)
         a = sorttree(a);
     else if(argc == 5)
@@ -71,14 +72,13 @@ int main(int argc, char **argv)
     else
     {
         i = 0;
-        getcunk(&a, argc, p);
-        while( i < 5)
+        getcunk(a, argc, p, argv);
+        while(p[i])
         {
             printf("%d\n", p[i]);
             i++;
         }
-        // insertionsort(&a, &b, argc);
-        // fill_a(&a, &b ,argc);
+        print_stack(a);
     }
     return(0);
 }

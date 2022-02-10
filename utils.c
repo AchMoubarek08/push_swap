@@ -174,28 +174,39 @@ void fill_a(pile *a, pile *b, int argc)
         argc--;
     }
 }
-void   getcunk(pile *a, int argc, int *p)
+
+pile cpy_stack(int argc, char **argv)
 {
-    pile b;
+    pile cp = new_pile();
+    while (argc > 1)
+    {
+        cp = push_stack(cp,ft_atoi(argv[argc - 1]));
+        argc--;
+    }
+    return cp;
+}
+
+void   getcunk(pile cp, int argc, int *p, char **argv)
+{
+    pile b = new_pile();
     int i = 0,j = 0;
+    cp = cpy_stack(argc, argv);
 
-
-    insertionsort(a, &b, argc);
-    fill_a(a, &b ,argc);
-    print_stack(*a);
+    insertionsort(&cp, &b, argc);
+    fill_a(&cp, &b ,argc);
     while(i <= (argc-2))
     {
         if(i == (argc-2)/5)
-            p[j++] = (*a)->i;
-        else if (i == 2 * (argc-2)/5 )
-            p[j++] = (*a)->i;
+            p[j++] = cp->i;
+        else if (i == 2 * (argc-2)/5)
+            p[j++] = cp->i;
         else if (i ==  3 * (argc-2)/5)
-            p[j++] = (*a)->i;
+            p[j++] = cp->i;
         else if (i == 4 * (argc-2)/5)
-            p[j++] = (*a)->i;
+            p[j++] = cp->i;
         else if (i ==  (argc-2))
-            p[j++] = (*a)->i;
+            p[j++] = cp->i;
         i++;
-        *a = (*a)->next;
+        cp = cp->next;
     }
 }

@@ -37,7 +37,7 @@ int     getmin(pile a);
 pile    get_last(pile a);
 void    reverse_rotate(pile *a, char *str);
 void    fill_a(pile *a, pile *b, int argc);
-void    getcunk(pile *a, int c, int *p);
-
+void    getcunk(pile cp, int argc, int *p, char **argv);
+pile    cpy_stack(int argc, char **argv);
 
 #endif
