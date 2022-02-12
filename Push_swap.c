@@ -55,7 +55,8 @@ int main(int argc, char **argv)
     int *p;
     pile cp;
 
-    p = (int *)malloc(20);
+    p = (int *)malloc(24);
+    p[0] = 0;
     while (i > 1)
     {
         a = push_stack(a,ft_atoi(argv[i - 1]));
@@ -71,14 +72,13 @@ int main(int argc, char **argv)
         sortfive(&a, &b);
     else
     {
-        i = 0;
-        getcunk(a, argc, p, argv);
-        while(p[i])
-        {
-            printf("%d\n", p[i]);
-            i++;
-        }
-        print_stack(a);
+        getcunk(cp, argc, p, argv);
+        printf("----%d %d----\n",p[0],p[1]);
+        extractchunk(&a, &b , p, argc);
     }
+
+    print_stack(a);
+    printf("----------\n");
+    print_stack(b);
     return(0);
 }

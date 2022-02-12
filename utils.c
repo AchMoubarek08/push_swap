@@ -112,23 +112,23 @@ void insertionsort(pile *a, pile *b, int argc)
         {
             while(i > 1)
             {
-                *a = rotate_stack(*a, "ra\n");
+                *a = rotate_stack(*a, "");
                 i--;
             }
-            push_to_stack(a, b, "pb\n");
+            push_to_stack(a, b, "");
         }
         else if(i == temp)
         {
-            reverse_rotate(a, "rra\n");
+            reverse_rotate(a, "");
         }
         else
         {
             while(i < temp)
             {
-                reverse_rotate(a, "rra\n");
+                reverse_rotate(a, "");
                 i++;
             }
-            push_to_stack(a, b, "pb\n");
+            push_to_stack(a, b, "");
         }
         temp--;
     }
@@ -170,7 +170,7 @@ void fill_a(pile *a, pile *b, int argc)
 {
     while(argc > 1)
     {
-        push_to_stack(b, a, "pa\n");
+        push_to_stack(b, a, "");
         argc--;
     }
 }
@@ -189,7 +189,7 @@ pile cpy_stack(int argc, char **argv)
 void   getcunk(pile cp, int argc, int *p, char **argv)
 {
     pile b = new_pile();
-    int i = 0,j = 0;
+    int i = 0,j = 1;
     cp = cpy_stack(argc, argv);
 
     insertionsort(&cp, &b, argc);
@@ -209,4 +209,45 @@ void   getcunk(pile cp, int argc, int *p, char **argv)
         i++;
         cp = cp->next;
     }
+}
+
+void extractchunk(pile *a,pile *b ,int *p,int argc)
+{
+    pile temp;
+    temp = *a;
+    int j = 0,i;
+
+    while(!stack_vide(temp))
+    {
+        j++;
+        if(temp->i <= p[1])
+        {
+            i = j;
+            if(i <= argc / 2)
+                while(i > 1)
+                {
+                    temp = rotate_stack(temp, "ra\n");
+                    i--;
+                }
+            else if(i == argc)
+                reverse_rotate(&temp, "rra\n");
+            else
+                while(i < argc)
+                {
+                    reverse_rotate(&temp, "rra\n");
+                    i++;
+                }
+            argc--;
+            push_to_stack(&temp,b,"pb\n");
+            *a = temp;
+            j = 0;
+        }
+        else
+            temp = temp->next;
+    }
+}
+
+void sortchunk(pile *a, pile *b, int *p)
+{
+
 }

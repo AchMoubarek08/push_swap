@@ -39,5 +39,6 @@ void    reverse_rotate(pile *a, char *str);
 void    fill_a(pile *a, pile *b, int argc);
 void    getcunk(pile cp, int argc, int *p, char **argv);
 pile    cpy_stack(int argc, char **argv);
+void    extractchunk(pile *a,pile *b ,int *p,int argc);
 
 #endif
