@@ -74,7 +74,7 @@ int main(int argc, char **argv)
     {
         getcunk(cp, argc, p, argv);
         printf("----%d %d----\n",p[0],p[1]);
-        extractchunk(&a, &b , p, argc);
+        extractchunk(&a, &b , p[1], argc, argv);
     }
 
     print_stack(a);

@@ -211,39 +211,51 @@ void   getcunk(pile cp, int argc, int *p, char **argv)
     }
 }
 
-void extractchunk(pile *a,pile *b ,int *p,int argc)
+void extractchunk(pile *a, pile *b ,int max ,int argc, char **argv)
 {
     pile temp;
-    temp = *a;
-    int j = 0,i;
+    int i;
 
+    i = 0;
+    temp = cpy_stack(argc, argv);
     while(!stack_vide(temp))
     {
-        j++;
-        if(temp->i <= p[1])
+
+        if(temp->i <= max)
         {
-            i = j;
-            if(i <= argc / 2)
-                while(i > 1)
-                {
-                    temp = rotate_stack(temp, "ra\n");
-                    i--;
-                }
-            else if(i == argc)
-                reverse_rotate(&temp, "rra\n");
-            else
-                while(i < argc)
-                {
-                    reverse_rotate(&temp, "rra\n");
-                    i++;
-                }
-            argc--;
-            push_to_stack(&temp,b,"pb\n");
-            *a = temp;
-            j = 0;
+        if(i == 0)
+        {
+            push_to_stack(a, b, "pb\n");
         }
-        else
-            temp = temp->next;
+
+            while(i > 0)
+            {
+
+                if(i > argc / 2)
+                {
+                    while(i < argc)
+                    {
+                        reverse_rotate(a, "rra\n");
+                        i++;
+                    }
+                    push_to_stack(a, b, "pb\n");
+                    i = 0;
+                }
+                else if(i < argc / 2)
+                {
+                    while(i > 0)
+                    {
+                        *a = rotate_stack(*a, "ra\n");
+                        i--;
+                    }
+                    push_to_stack(a, b, "pb\n");
+                    i = 0;
+                }
+            }
+        }
+        argc--;
+        i++;
+        temp = temp->next;
     }
 }
 
